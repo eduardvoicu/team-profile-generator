@@ -108,3 +108,11 @@ const internQuestions = [
         message: "What is the intern's school"
     }
 ];
+
+// Function to initiliaze
+
+function init() {
+    inquirer.prompt(managerQuestions)
+        .then(function ({ name, id, email, officeNumber }))
+}
+    
