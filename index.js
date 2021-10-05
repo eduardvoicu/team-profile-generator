@@ -16,3 +16,22 @@ const employees = [];
 
 // Basic Questions
 
+var generalQuestions = [
+    {
+        type: "input",
+        name: "name",
+        message: "What is your employee's name?"
+    },
+    {
+        type: "number",
+        name: "id",
+        message: "What is your employee's ID number?"
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "What is your employee's email?"
+    }
+];
+
+// Manager questions
