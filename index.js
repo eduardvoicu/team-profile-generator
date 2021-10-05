@@ -59,3 +59,29 @@ const managerQuestions = [
     }
 ];
 
+// Engineer Questions
+
+const engineerQuestions = [
+    {
+        type: "input",
+        name: "name",
+        message:  "What is the engineer's name?"
+    },
+    {
+        type: "input",
+        name: "id",
+        message: "What is the engineer's ID?",
+    },
+    {
+        type: "input",
+        name: "id",
+        message: "What is the engineer's email?"
+    },
+    {
+        type: "input",
+        name: "GitHub",
+        message: "What is the engineer's GitHub username?"
+    },
+];
+
+// Intern Questions
