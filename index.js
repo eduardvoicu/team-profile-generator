@@ -157,3 +157,12 @@ function createIntern() {
             createTeam();
         });
 };
+
+function saveFile() {
+    fs.writeFile(outputPath, render(employees), function (err) {
+        if (err) throw err;
+        console.log("Completed!")
+    })
+};
+
+init();
