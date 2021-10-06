@@ -12,6 +12,7 @@ const render = require("./lib/htmlRenderer");
 const { inherits } = require("util");
 const { finished } = require("stream");
 const manager = require("./lib/manager");
+const { saveSnapshotFile } = require("jest-snapshot/build/utils");
 
 const employees = [];
 
@@ -129,9 +130,13 @@ function createTeam() {
         choices: ["Engineer", "Intern", "I am done adding employees!"]
     }).then(function ({ employeeType }) {
         if (employeeType === "Engineer") {
-            
+            createEngineer();
+        } else if (employeeType === "Intern") {
+            createIntern();
+        } else if (employeeType === "I am done adding employees!") {
+            saveFile();
         }
     })
-}
+};
 
     
