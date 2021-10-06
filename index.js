@@ -11,6 +11,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 const { inherits } = require("util");
 const { finished } = require("stream");
+const manager = require("./lib/manager");
 
 const employees = [];
 
@@ -113,6 +114,24 @@ const internQuestions = [
 
 function init() {
     inquirer.prompt(managerQuestions)
-        .then(function ({ name, id, email, officeNumber }))
+        .then(function ({ name, id, email, officeNumber }) {
+            const manager = new manager(name, id, email, officeNumber);
+            employees.push(manager);
+            fs.createReadStream();
+        });
+};
+
+function createTeam() {
+    inquirer.prompt({
+        type: "list",
+        name: "employeeType",
+        message: "What type of employee do you want to create? (Please select 'Finished' to stop adding employees.",
+        choices: ["Engineer", "Intern", "I am done adding employees!"]
+    }).then(function ({ employeeType }) {
+        if (employeeType === "Engineer") {
+            
+        }
+    })
 }
+
     
