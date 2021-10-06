@@ -148,4 +148,8 @@ function createEngineer() {
         });
     
 };
-    
+
+function createIntern() {
+    inquirer.prompt(internQuestions)
+        .then(function ({ name, id, email, school }) {
+            
