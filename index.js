@@ -139,4 +139,13 @@ function createTeam() {
     })
 };
 
+function createEngineer() {
+    inquirer.prompt(engineerQuestions)
+        .then(function ({ name, id, email, github }) {
+            const engineer = new engineer(name, id, email, github);
+            employees.push(engineer);
+            createTeam();
+        });
+    
+};
     
