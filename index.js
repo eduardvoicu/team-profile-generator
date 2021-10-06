@@ -152,4 +152,8 @@ function createEngineer() {
 function createIntern() {
     inquirer.prompt(internQuestions)
         .then(function ({ name, id, email, school }) {
-            
+            const intern = new Intern(name, id, email, school);
+            employees.push(intern);
+            createTeam();
+        });
+};
