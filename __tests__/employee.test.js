@@ -1,5 +1,4 @@
-const { expect } = require("@jest/globals");
-const { test } = require("jest-circus");
+const { test, expect } = require("@jest/globals");
 const employee = require("../lib/employee");
 
 test("Can instantiate Employee instance", () => {

@@ -1,5 +1,4 @@
-const { expect } = require("@jest/globals");
-const { test } = require("jest-circus");
+const { test, expect } = require("@jest/globals");
 const engineer = require("../lib/engineer");
 
 test("Can set GitHub account via constructor", () => {
@@ -17,5 +16,5 @@ test("getRole() should return \"engineer\"", () => {
 test("Can get GitHub username via getGitHub()", () => {
     const testValue = "GitHubAccount";
     const e = new engineer("Coffee", 1, "test@test.com", testValue);
-    expect(e.getGitHub()).toBe(testValue);
+    expect(e.getGithub()).toBe(testValue);
 });

@@ -1,6 +1,7 @@
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
+const Employee = require("./lib/employee");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
@@ -8,16 +9,16 @@ const fs = require("fs");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-const render = require("./lib/htmlRender");
-const { inherits } = require("util");
+const htmlRender = require("./lib/htmlRender");
+const { inherits, render} = require("util");
 const { finished } = require("stream");
-const { saveSnapshotFile } = require("jest-snapshot/build/utils");
+// const { saveSnapshotFile } = require("jest-snapshot/build/utils");
 
-const employees = [];
+const employee = [];
 
 // Basic Questions
 
-var generalQuestions = [
+/* var generalQuestions = [
     {
         type: "input",
         name: "name",
@@ -34,7 +35,7 @@ var generalQuestions = [
         message: "What is your employee's email?"
     }
 ];
-
+*/
 // Manager Questions
 
 const managerQuestions = [
@@ -75,7 +76,7 @@ const engineerQuestions = [
     },
     {
         type: "input",
-        name: "id",
+        name: "email",
         message: "What is the engineer's email?"
     },
     {
@@ -115,9 +116,9 @@ const internQuestions = [
 function init() {
     inquirer.prompt(managerQuestions)
         .then(function ({ name, id, email, officeNumber }) {
-            const manager = new manager(name, id, email, officeNumber);
-            employees.push(manager);
-            fs.createReadStream();
+            const manager = new Manager(name, id, email, officeNumber);
+            employee.push(manager);
+            createTeam();
         });
 };
 
@@ -142,7 +143,7 @@ function createEngineer() {
     inquirer.prompt(engineerQuestions)
         .then(function ({ name, id, email, github }) {
             const engineer = new Engineer(name, id, email, github);
-            employees.push(engineer);
+            employee.push(engineer);
             createTeam();
         });
     
@@ -152,13 +153,13 @@ function createIntern() {
     inquirer.prompt(internQuestions)
         .then(function ({ name, id, email, school }) {
             const intern = new Intern(name, id, email, school);
-            employees.push(intern);
+            employee.push(intern);
             createTeam();
         });
 };
 
 function saveFile() {
-    fs.writeFile(outputPath, render(employees), function (err) {
+    fs.writeFile(outputPath, htmlRender(employee), function (err) {
         if (err) throw err;
         console.log("Completed!")
     })
