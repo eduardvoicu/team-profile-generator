@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "inquirer": "^8.1.5"
+    "inquirer": "^8.1.5",
+    "chalk": "^2.4.2"
   },
   "devDependencies": {
     "jest": "^27.2.4"

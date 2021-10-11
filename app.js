@@ -1,17 +1,16 @@
-const manager = require("./lib/manager");
-const engineer = require("./lib/engineer");
-const intern = require("./lib/intern");
+const Manager = require("./lib/manager");
+const Engineer = require("./lib/engineer");
+const Intern = require("./lib/intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
-const OUTPUT_DIR = path.resolve(_dirname, "output");
+const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-const render = require("./lib/htmlRenderer");
+const render = require("./lib/htmlRender");
 const { inherits } = require("util");
 const { finished } = require("stream");
-const manager = require("./lib/manager");
 const { saveSnapshotFile } = require("jest-snapshot/build/utils");
 
 const employees = [];
@@ -142,7 +141,7 @@ function createTeam() {
 function createEngineer() {
     inquirer.prompt(engineerQuestions)
         .then(function ({ name, id, email, github }) {
-            const engineer = new engineer(name, id, email, github);
+            const engineer = new Engineer(name, id, email, github);
             employees.push(engineer);
             createTeam();
         });
